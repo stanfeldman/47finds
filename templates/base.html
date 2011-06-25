@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+        <title>47finds - Поиск в интернете</title>
+        <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />  
+        <link type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.css" rel="stylesheet" /> 
+        <style>
+        	body { background: #CCC;}
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> 
+		<script type="text/javascript"> 
+		    $(document).bind("mobileinit", function(){
+		        $.extend($.mobile, {
+		            loadingMessage: "Загрузка...",
+		            pageLoadErrorMessage: "Страница не найдена =("
+		        });
+		    $.mobile.page.prototype.options.backBtnText = "Назад";
+		    $.mobile.listview.prototype.options.filterPlaceholder = "Найти...";
+			$.mobile.selectmenu.prototype.options.nativeMenu = false;  
+			$.mobile.page.prototype.options.degradeInputs.date = 'text';              
+		    });
+		</script> 
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+		<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.js"></script>
+    </head>
+    <body>
+		<div data-role="page" data-theme="b" style="height: 100%">
+			<div id="header" data-role="header" data-position="fixed" data-backbtn="false">
+				{% block back_button %}{% endblock %}
+				<h1>47finds - {% block header %}{% endblock %}</h1>
+				{% block header_buttons %}{% endblock %}
+			</div>
+			<div data-role="content">
+				{% block content %}{% endblock %} 
+			</div>
+			<div id="footer" data-role="footer" data-position="fixed">
+				<table>
+					<tr>
+						<td>
+							&nbsp;
+						</td>
+						<td style="width: 100%; text-align: center;">© 2011 47bits</td>
+						<td>{% block footer_buttons %}{% endblock %}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+    </body>
+</html>

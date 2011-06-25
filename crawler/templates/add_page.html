@@ -1,0 +1,21 @@
+{% extends "templates/base.html" %}
+
+{% block header %} Добро пожаловать! {% endblock %}
+
+{% block back_button %}
+<a href="/" data-icon="arrow-l" data-direction="reverse">Вернуться к поиску</a>
+{% endblock %}
+
+{% block content %}
+<form action="/add/" method="post" data-ajax="false">
+<ul data-role="listview" data-inset="true">
+	<li>
+		<div data-role="fieldcontain"> 
+			<label for="url">Введите URL:</label>
+			<input type="text" name="url" id="url" value="" /> 
+		</div>
+		<button id="send" type="submit" data-icon="plus" data-theme="e">Добавить</button>
+	</li>
+</ul>     
+</form>
+{% endblock %}

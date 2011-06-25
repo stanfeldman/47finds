@@ -1,0 +1,35 @@
+{% extends "templates/base.html" %}
+
+{% block header %} Поиск в интернете {% endblock %}
+
+{% block content %}
+<form method="post" data-ajax="false">
+<ul data-role="listview" data-inset="true">
+	<li>
+		<div data-role="fieldcontain"> 
+			<label for="query">Введите фразу или слово для поиска:</label>
+			<input type="search" name="query" id="query" value="" /> 
+		</div>
+		<button id="send" type="submit" data-icon="search" data-theme="e">Найти</button>
+	</li>
+</ul>     
+</form>   
+<ul data-role="listview" data-inset="true" id="messages">
+	{% if is_searched %}
+		{% for page in pages %}
+			<li>
+				<a href="{{page.url}}" rel="external" target="_blank">
+					<h3>{{page.title}}</h3>
+					<p>{{page.url}}</p>
+				</a>
+			</li>
+		{% empty %}
+			<li>Ничего не найдено</li>
+		{% endfor %}
+	{% else %}
+		<li>Введите условия поиска</li>
+	{% endif %}
+</ul>
+{% endblock %}
+
+
